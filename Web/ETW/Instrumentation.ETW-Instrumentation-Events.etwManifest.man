@@ -1,0 +1,54 @@
+<instrumentationManifest xmlns="http://schemas.microsoft.com/win/2004/08/events">
+ <instrumentation xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:win="http://manifests.microsoft.com/win/2004/08/windows/events">
+  <events xmlns="http://schemas.microsoft.com/win/2004/08/events">
+<provider name="ETW-Instrumentation-Events" guid="{78e368d4-0464-5140-49cb-f6c3cb225bde}" resourceFileName="C:\Users\Richard\Documents\Visual Studio 2013\Projects\AspNetEtwSample\Instrumentation\bin\Debug\Instrumentation.ETW-Instrumentation-Events.etwManifest.dll" messageFileName="C:\Users\Richard\Documents\Visual Studio 2013\Projects\AspNetEtwSample\Instrumentation\bin\Debug\Instrumentation.ETW-Instrumentation-Events.etwManifest.dll" symbol="ETWInstrumentationEvents">
+ <tasks>
+  <task name="StartTelemetry" message="$(string.task_StartTelemetry)" value="1"/>
+  <task name="Info" message="$(string.task_Info)" value="65531"/>
+ </tasks>
+ <opcodes>
+ </opcodes>
+ <keywords>
+  <keyword name="Session3" message="$(string.keyword_Session3)" mask="0x100000000000"/>
+  <keyword name="Session2" message="$(string.keyword_Session2)" mask="0x200000000000"/>
+  <keyword name="Session1" message="$(string.keyword_Session1)" mask="0x400000000000"/>
+  <keyword name="Session0" message="$(string.keyword_Session0)" mask="0x800000000000"/>
+ </keywords>
+ <events>
+  <event value="1" version="0" level="win:Informational" symbol="StartTelemetry" message="$(string.event_StartTelemetry)" opcode="win:Start" task="StartTelemetry" template="StartTelemetryArgs"/>
+  <event value="2" version="0" level="win:Informational" symbol="StopTelemetry" message="$(string.event_StopTelemetry)" opcode="win:Stop" task="StartTelemetry" template="StopTelemetryArgs"/>
+  <event value="3" version="0" level="win:Informational" symbol="Info" task="Info" template="InfoArgs"/>
+ </events>
+ <templates>
+  <template tid="StartTelemetryArgs">
+   <data name="member" inType="win:UnicodeString"/>
+   <data name="file" inType="win:UnicodeString"/>
+   <data name="line" inType="win:UnicodeString"/>
+  </template>
+  <template tid="StopTelemetryArgs">
+   <data name="member" inType="win:UnicodeString"/>
+   <data name="file" inType="win:UnicodeString"/>
+   <data name="line" inType="win:UnicodeString"/>
+  </template>
+  <template tid="InfoArgs">
+   <data name="message" inType="win:UnicodeString"/>
+  </template>
+ </templates>
+</provider>
+</events>
+</instrumentation>
+<localization>
+ <resources culture="en-US">
+  <stringTable>
+   <string id="event_StartTelemetry" value="START telemetry: method:%1 file:%2 line:%3"/>
+   <string id="event_StopTelemetry" value="STOP telemetry: method:%1 file:%2 line:%3"/>
+   <string id="keyword_Session0" value="Session0"/>
+   <string id="keyword_Session1" value="Session1"/>
+   <string id="keyword_Session2" value="Session2"/>
+   <string id="keyword_Session3" value="Session3"/>
+   <string id="task_Info" value="Info"/>
+   <string id="task_StartTelemetry" value="StartTelemetry"/>
+  </stringTable>
+ </resources>
+</localization>
+</instrumentationManifest>
